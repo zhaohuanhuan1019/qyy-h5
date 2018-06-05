@@ -1,0 +1,184 @@
+@mixin border-1px($color){
+    position: relative;
+    &:after{
+        position: absolute;
+        width:100%;
+        left:0;
+        bottom:0;
+        border-top:1px solid $color;
+        z-index:-1;
+        content: '';
+    }
+}
+@mixin border-left($color){
+    position: relative;
+    &:before{
+        position: absolute;
+        height:100%;
+        left:0;
+        bottom:0;
+        border-left:1px solid $color;
+        content: '';
+    }
+}
+@mixin border-no(){
+    &:after{
+        display: none;
+    }
+}
+@mixin bg-image($url) {
+    background-image: url($url + '@2x.png');
+    background-repeat: no-repeat;
+    @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+        background-image: url($url + '@3x.png');
+    }
+}
+
+@mixin border-1px($color) {
+    position: relative;
+    &:after {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        border-top: 1px solid $color;
+        content: '';
+    }
+}
+
+@mixin border-none() {
+    &:after {
+        display: none;
+    }
+}
+
+@mixin clear-float(){
+    content: ".";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+    height: 0;
+}
+
+/*声明 WebFont*/
+/*@font-face {
+    font-family: 'DINCond-Bold';
+    src: url('../../../static/font/DINCond-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+
+@mixin single-line() {
+    display: block;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+@mixin ellipsis-line($num) {
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    flex-direction:column;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+
+@mixin reason-page() {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 110;
+    background-color: #ffffff;
+    font-size: .12rem;
+
+    .head-btn {
+        $height: .44rem;
+        font-size: .14rem;
+        color: #ffffff;
+        line-height: $height;
+
+        .close {
+            padding: 0 .16rem 0 .1rem;
+            height: $height;
+            position: absolute;
+            left: .37rem;
+            top: 0;
+        }
+
+        .confirm {
+            padding: 0 .16rem;
+            height: $height;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+
+
+    .reason {
+        position: absolute;
+        top: .44rem;
+        left: 0;
+        right: 0;
+        bottom: .38rem;
+        overflow: hidden;
+
+        & > textarea {
+            resize: none;
+            outline: none;
+            width: 102%;
+            height: 100%;
+            padding: .16rem;
+            box-sizing: border-box;
+            border: none;
+            background-color: #ffffff;
+            font-size: .16rem;
+            line-height: .22rem;
+            color: #333333;
+            text-align: justify;
+            word-break:break-all;
+            white-space: pre-wrap;
+
+            &::-webkit-input-placeholder {
+                color: #cccccc;
+                text-overflow: ellipsis;
+                font-family: PingFangSC-Regular,Helvetica,Arial,sans-serif;
+                font-size: .16rem;
+            }
+            &:-moz-placeholder,
+            &::-moz-placeholder,
+            &:-ms-input-placeholder {
+                color: #cccccc !important;
+                text-overflow: ellipsis;
+                font-family: PingFangSC-Regular,Helvetica,Arial,sans-serif;
+                font-size: .16rem;
+            }
+
+        }
+    }
+
+    .num {
+        position: fixed;
+        right: .16rem;
+        bottom: .13rem;
+        font-size: .12rem;
+        line-height: .16rem;
+        color:  #cccccc;
+
+        & > span {
+            color: #333333;
+        }
+
+        .maxed {
+            color: #FF3434;
+        }
+    }
+}
